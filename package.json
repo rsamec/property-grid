@@ -1,0 +1,49 @@
+{
+  "name": "property-grid",
+  "version": "0.1.0",
+  "description": "ReactJS property grid",
+  "main": "index.js",
+  "scripts": {
+    "test": "make",
+    "build": "./node_modules/.bin/webpack",
+    "watch": "./node_modules/.bin/webpack --watch --progress --colors",
+    "dev": "webpack-dev-server --progress --colors --port 8181"
+  },
+  "keywords": [
+    "property-grid",
+    "property",
+    "grid",
+    "ui",
+    "widget",
+    "react-component",
+    "react"
+  ],
+  "author": "Radu Brehar",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.21.4",
+    "should": "~4.0.4",
+    "webpack": "~1.4.x",
+    "jsx-loader": "~0.11.0",
+    "webpack-dev-server": "~1.6.5",
+    "css-loader": "~0.9.0",
+    "stylus-loader": "~0.4.0",
+    "style-loader": "~0.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/radubrehar/property-grid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/radubrehar/property-grid/issues"
+  },
+  "dependencies": {
+    "functionally": "~0.5.1",
+    "set-deep": "~0.1.0",
+    "ustring": "~1.4.0",
+    "react": "~0.11.2",
+    "copy-utils": "~1.0.0",
+    "normalize.css": "~3.0.1",
+    "css-utils": "~0.3.0"
+  }
+}

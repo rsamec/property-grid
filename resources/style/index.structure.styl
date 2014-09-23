@@ -1,0 +1,34 @@
+.property-grid
+    box-sizing border-box
+    *
+        box-sizing border-box
+    .body
+        width 100%
+
+    .property
+        display table
+        table-layout fixed
+        width 100%
+        .name
+        .value
+            display table-cell
+
+        .value
+            .editor
+                padding-top 0px
+                padding-bottom 0px
+                size 100%
+
+    .property-composite.collapsed
+        .children
+            display none
+
+    .expander
+        display inline-block
+        margin-right 3px
+        cursor pointer
+
+        &.collapsed
+            arrow right (6px 8px) gray
+        &.expanded
+            arrow down (6px 8px) gray
