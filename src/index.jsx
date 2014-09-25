@@ -12,6 +12,8 @@ var CompositeProperty = require('./CompositeProperty')
 var setDeep = require('set-deep')
 var getDeep  = setDeep.get
 
+function empty(){}
+
 module.exports = React.createClass({
 
     displayName: 'PropertyGrid',
@@ -70,16 +72,14 @@ module.exports = React.createClass({
     },
 
     handleChange: function(event, prop, path, parents){
-        var fn = this.props.onChange
-
-        if (typeof fn == 'function'){
-            fn(event, prop, path, parents)
-        }
+        var fn = this.props.onChange || empty
 
         if (this.props.autoUpdate){
             this.setPropertyValue(prop, path, event.target.value)
             this.setState({})
         }
+
+        fn(event, prop, path, parents)
     },
 
     setPropertyValue: function(prop, path, value){
