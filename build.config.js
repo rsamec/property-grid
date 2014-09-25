@@ -2,10 +2,8 @@ module.exports = {
     entry: './index.js',
     output: {
         libraryTarget: 'umd',
-        filename: 'react-property-grid.js'
-    },
-    externals: {
-        'react': 'React'
+        filename     : 'react-property-grid.js',
+        library      : 'PropertyGrid'
     },
     module: {
         loaders: [
