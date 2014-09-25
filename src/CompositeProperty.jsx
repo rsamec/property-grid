@@ -40,11 +40,16 @@ var CompositeProperty = React.createClass({
 
     renderComposite: function(parents, prop){
 
-        var label      = this.getLabel(prop)
-        var labelStyle = {}
+        var label     = this.getLabel(prop)
+        var nameStyle = {}
+        var valueStyle = {}
 
         if (this.props.labelWidth){
-            labelStyle.width = this.props.labelWidth
+            nameStyle.width = this.props.labelWidth
+        }
+
+        if (this.props.rowHeight){
+            nameStyle.height = valueStyle.height = this.props.rowHeight
         }
 
         var classes = ['property-composite']
@@ -55,12 +60,12 @@ var CompositeProperty = React.createClass({
         return (
             <div key={prop.name} className={classes.join(' ')}>
                 <div className="property">
-                    <div className="name" style={labelStyle}>
+                    <div className="name" style={nameStyle}>
                         {this.renderExpander(parents, prop)}
                         {label}
                     </div>
-                    <div className="value">
-                        <input className="editor" readOnly={true} value={this.getCompositePropertyValue(parents, prop)}/>
+                    <div className="value" style={valueStyle}>
+                        <div className="editor" readOnly={true} value={this.getCompositePropertyValue(parents, prop)}/>
                     </div>
                 </div>
                 <div className="children">
@@ -91,6 +96,7 @@ var CompositeProperty = React.createClass({
             config : prop,
             value  : value,
             labelWidth: this.props.labelWidth,
+            rowHeight : this.props.rowHeight,
             parents: parents,
             onChange: this.handleChange(this, parents, prop)
         })

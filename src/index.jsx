@@ -5,15 +5,6 @@
 require('../index.styl')
 
 var React    = require('react')
-var F        = require('functionally')
-var bindArgs = F.bindArgs
-var curry    = F.curry
-var dot      = F.dot
-
-// var NumberField = React.DOM.input //require('./NumberField')
-// var TextField = React.DOM.input // require('./TextField')
-// var CheckBox = React.DOM.input //require('./CheckBox')
-
 var copyKeys = require('copy-utils').copyKeys
 
 var Property = require('./Property')
@@ -21,9 +12,9 @@ var CompositeProperty = require('./CompositeProperty')
 var setDeep = require('set-deep')
 var getDeep  = setDeep.get
 
-var Properties = React.createClass({
+module.exports = React.createClass({
 
-    displayName: 'Properties',
+    displayName: 'PropertyGrid',
 
     getDefaultProps: function(){
         return {
@@ -61,13 +52,14 @@ var Properties = React.createClass({
 
     renderBody: function(){
 
-        var root  = {items: this.props.properties || [], root: true}
+        var root = {items: this.props.properties || [], root: true}
 
         return (
             <div className="body">
                 <CompositeProperty
                     config={root}
                     labelWidth={this.props.labelWidth}
+                    rowHeight={this.props.rowHeight}
                     onChange={this.handleChange}
                     valueProvider={this.props.valueProvider}
                     value={this.props.value}
@@ -94,5 +86,3 @@ var Properties = React.createClass({
         setDeep(path, this.props.value, value)
     }
 })
-
-module.exports = Properties

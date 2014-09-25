@@ -2,10 +2,10 @@
 
 'use strict'
 
-var React    = require('react/addons')
-window.React = React
+var React    = require('react')
+// window.React = React
 
-var PropertyGrid = require('./index')
+var PropertyGrid = require('./index.js')
 var properties   = require('./test.props')
 
 var value = {
@@ -34,7 +34,9 @@ var cmp = React.renderComponent(
     <PropertyGrid
         properties={properties}
         onChange={onChange}
+        rowHeight={30}
         autoUpdate={true}
+        valueProvider={provide}
         value={value} />
     , document.body
 )

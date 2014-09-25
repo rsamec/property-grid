@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "make",
-    "build": "./node_modules/.bin/webpack",
+    "build": "./node_modules/.bin/webpack --config build.config.js",
     "watch": "./node_modules/.bin/webpack --watch --progress --colors",
     "dev": "webpack-dev-server --progress --colors --port 8181"
   },

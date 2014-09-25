@@ -13,7 +13,7 @@ module.exports = React.createClass({
         return {}
     },
 
-    shouldComponentUpdate: function(props){
+    shouldComponentUpdatexxx: function(props){
         return (this.props.value != props.value) ||
                 (this.props.label != this.getLabel(props.config))
     },
@@ -28,18 +28,21 @@ module.exports = React.createClass({
         var name  = prop.name
         var label = this.props.label = this.getLabel()
 
-        var labelStyle = {}
+        var nameStyle = {}
+        var valueStyle = {}
 
         if (this.props.labelWidth){
-            labelStyle.width = this.props.labelWidth
+            nameStyle.width = this.props.labelWidth
         }
 
-
+        if (this.props.rowHeight){
+            nameStyle.height = valueStyle.height = this.props.rowHeight
+        }
 
         return (
             <div className={"property depth-"+depth}>
-                <div className="name" style={labelStyle}>{label}</div>
-                <div className="value">
+                <div className="name" style={nameStyle}>{label}</div>
+                <div className="value" style={valueStyle}>
                     {this.renderEditor(prop)}
                 </div>
             </div>
@@ -50,7 +53,8 @@ module.exports = React.createClass({
         var props = {
             onFocus  : this.handleFocus,
             onBlur   : this.handleBlur,
-            value    : this.props.value,
+            // value    : this.props.value,
+            key: 'editor',
             className: 'editor',
             onChange : this.props.onChange
         }
@@ -63,7 +67,7 @@ module.exports = React.createClass({
             Editor = (Editor || React.DOM.input)(props)
         }
 
-        return Editor
+        return Editor //= <input />
     },
 
     handleFocus: function(event){

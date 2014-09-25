@@ -1,8 +1,11 @@
 module.exports = {
-    entry: './test.jsx',
+    entry: './index.js',
     output: {
-        // libraryTarget: 'umd',
-        filename: 'bundle.js'
+        libraryTarget: 'umd',
+        filename: 'react-property-grid.js'
+    },
+    externals: {
+        'react': 'React'
     },
     module: {
         loaders: [
