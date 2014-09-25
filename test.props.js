@@ -6,9 +6,7 @@ var px = function(v){
 
 module.exports = [
     {
-        name: 'id',
-        label: 'Unique id',
-        readOnly: true
+        name: 'name'
     },
     {
         name: 'ellipsis'

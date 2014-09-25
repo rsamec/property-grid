@@ -36,7 +36,6 @@ var cmp = React.renderComponent(
         onChange={onChange}
         rowHeight={30}
         autoUpdate={true}
-        valueProvider={provide}
         value={value} />
     , document.body
 )

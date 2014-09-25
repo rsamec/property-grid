@@ -54,6 +54,7 @@ module.exports = React.createClass({
 
         var root = {items: this.props.properties || [], root: true}
 
+        console.log(this.props.value)
         return (
             <div className="body">
                 <CompositeProperty

@@ -53,7 +53,7 @@ module.exports = React.createClass({
         var props = {
             onFocus  : this.handleFocus,
             onBlur   : this.handleBlur,
-            // value    : this.props.value,
+            value    : this.props.value,
             key: 'editor',
             className: 'editor',
             onChange : this.props.onChange
