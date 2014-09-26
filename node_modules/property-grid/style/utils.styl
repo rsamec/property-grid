@@ -1,0 +1,22 @@
+arrow(direction, size = (15px 15px), color = red)
+    if direction == "up" or direction == "down"
+
+        border-left size[0] solid transparent
+        border-right size[0] solid transparent
+
+    if direction == "left" or direction == "right"
+
+        border-top size[0] solid transparent
+        border-bottom size[0] solid transparent
+
+    if direction == "up"
+        border-bottom size[1] solid color
+
+    if direction == "down"
+        border-top size[1] solid color
+
+    if direction == "left"
+        border-right size[1] solid color
+
+    if direction == "right"
+        border-left size[1] solid color
