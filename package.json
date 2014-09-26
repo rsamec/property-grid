@@ -1,6 +1,6 @@
 {
   "name": "property-grid",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "ReactJS property grid",
   "main": "lib/index.js",
   "scripts": {
