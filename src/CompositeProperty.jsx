@@ -14,6 +14,8 @@ function preventDefault(e){
     e.preventDefault()
 }
 
+function emptyFn(){}
+
 var CompositeProperty = React.createClass({
 
     displayName: 'CompositeProperty',
@@ -65,7 +67,7 @@ var CompositeProperty = React.createClass({
                         {label}
                     </div>
                     <div className="value" style={valueStyle}>
-                        <div className="editor" readOnly={true} value={this.getCompositePropertyValue(parents, prop)}/>
+                        <input className="editor" readOnly={true} value={this.getCompositePropertyValue(parents, prop)}/>
                     </div>
                 </div>
                 <div className="children">
@@ -92,26 +94,25 @@ var CompositeProperty = React.createClass({
         var value = this.getPropertyValue(parents, prop)
 
         return Property({
-            key    : prop.name,
-            config : prop,
-            value  : value,
+            key       : prop.name,
+            config    : prop,
+            value     : value,
             labelWidth: this.props.labelWidth,
             rowHeight : this.props.rowHeight,
-            parents: parents,
-            onChange: this.handleChange(this, parents, prop)
+            parents   : parents,
+            onChange  : this.handleChange
         })
     },
 
-    handleChange: F.curry(function(compositeProperty, parents, prop, event){
-        var fn = compositeProperty.props.onChange
+    handleChange: function(event, prop, value, parents){
+
+        var fn   = this.props.onChange || emptyFn
         var path = parents.map(dotName)
 
         path.push(prop.name)
 
-        if (typeof fn == 'function'){
-            fn(event, prop, path, parents)
-        }
-    }),
+        fn(event, prop, value, path, parents)
+    },
 
     getPropertyValue: function(parents, prop){
         var provider = this.props.valueProvider

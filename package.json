@@ -1,13 +1,18 @@
 {
   "name": "property-grid",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "ReactJS property grid",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "make",
-    "build": "./node_modules/.bin/webpack --config build.config.js",
-    "watch": "./node_modules/.bin/webpack --watch --progress --colors",
-    "dev": "webpack-dev-server --progress --colors --port 8181"
+    "test"         : "make",
+
+    "build"        : "npm run lib && npm run compile-style",
+    "lib"          : "./node_modules/.bin/gulp",
+    "compile-style": "./node_modules/.bin/webpack --config style.config.js",
+
+    "serve"        : "./node_modules/.bin/http-server",
+    "start"        : "npm run serve | npm run dev",
+    "dev"          : "./node_modules/.bin/webpack-dev-server --progress --colors --port 8181"
   },
   "keywords": [
     "property-grid",
@@ -28,7 +33,11 @@
     "webpack-dev-server": "~1.6.5",
     "css-loader": "~0.9.0",
     "stylus-loader": "~0.4.0",
-    "style-loader": "~0.8.0"
+    "style-loader": "~0.8.0",
+    "gulp": "~3.8.8",
+    "gulp-react": "~1.0.2",
+    "react-tools": "~0.11.2",
+    "extract-text-webpack-plugin": "~0.3.1"
   },
   "repository": {
     "type": "git",

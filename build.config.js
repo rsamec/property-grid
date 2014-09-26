@@ -6,20 +6,7 @@ module.exports = {
         library      : 'PropertyGrid'
     },
     module: {
-        loaders: [
-            {
-                test: /\.jsx$/,
-                loader: 'jsx-loader?insertPragma=React.DOM'
-            },
-            {
-                test: /\.js$/,
-                loader: 'jsx-loader?harmony'
-            },
-            {
-                test: /\.styl$/,
-                loader: 'style-loader!css-loader!stylus-loader'
-            }
-        ]
+        loaders: require('./loaders.config')
     },
     resolve: {
         // Allow to omit extensions when requiring these files

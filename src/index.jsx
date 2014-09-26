@@ -2,8 +2,6 @@
 
 'use strict'
 
-require('../index.styl')
-
 var React    = require('react')
 var copyKeys = require('copy-utils').copyKeys
 
@@ -12,7 +10,7 @@ var CompositeProperty = require('./CompositeProperty')
 var setDeep = require('set-deep')
 var getDeep  = setDeep.get
 
-function empty(){}
+function emptyFn(){}
 
 module.exports = React.createClass({
 
@@ -71,18 +69,18 @@ module.exports = React.createClass({
         )
     },
 
-    handleChange: function(event, prop, path, parents){
-        var fn = this.props.onChange || empty
+    handleChange: function(event, prop, value, path, parents){
+        var fn = this.props.onChange || emptyFn
 
         if (this.props.autoUpdate){
-            this.setPropertyValue(prop, path, event.target.value)
+            this.setPropertyValue(path, value)
             this.setState({})
         }
 
-        fn(event, prop, path, parents)
+        fn(event, prop, value, path, parents)
     },
 
-    setPropertyValue: function(prop, path, value){
+    setPropertyValue: function(path, value){
         setDeep(path, this.props.value, value)
     }
 })

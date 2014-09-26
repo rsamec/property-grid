@@ -35,10 +35,9 @@ module.exports = [
                 }
             },
             {
-                name: 'Position',
+                name: 'position',
                 readOnly: true,
                 render: function(value){
-
                     return '{top: ' + px(value.top || 0) + ', left: ' + px(value.left || 0) + '}'
                 },
                 items: [

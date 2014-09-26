@@ -10,6 +10,27 @@ $ npm install --save property-grid
 
 ## Usage
 
+Basic usage:
+```jsx
+
+function onChange(event, prop, value, path, parents){
+    console.log(prop.name + ' has a new value: "' + value + '". Full path is ' + path.join('/'))
+}
+
+React.renderComponent(
+    <PropertyGrid
+        properties={properties}
+        autoUpdate={true}
+        onChange={onChange}
+        value={value}
+    >
+    </PropertyGrid>,
+    document.body
+)
+```
+
+Complete example:
+
 ```jsx
 var React = require('react')
 var PropertyGrid = require('property-grid')
@@ -77,6 +98,26 @@ React.renderComponent(
         autoUpdate={true}
         value={value}
     >
-    </PropertyGrid>
+    </PropertyGrid>,
+    document.body
 )
 ```
+
+## CSS Styles
+
+Please either manually include ```index.css``` in your page or require it in your webpack module.
+
+Example with webpack
+
+```js
+require('~property-grid/index.css')
+
+//or, if you use stylus, include index.styl
+require('~property-grid/index.styl')
+
+var PropertyGrid = require('property-grid')
+
+...
+```
+
+If you use ```webpack``` with ```stylus``` and also include ```normalize.css``` please use ```require('~property-grid/index.styl')``` since webpack will be smart enough to only include ```normalize.css``` only once in your project

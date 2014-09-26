@@ -13,9 +13,9 @@ module.exports = React.createClass({
         return {}
     },
 
-    shouldComponentUpdatexxx: function(props){
+    shouldComponentUpdate: function(props){
         return (this.props.value != props.value) ||
-                (this.props.label != this.getLabel(props.config))
+               (this.props.label != this.getLabel(props.config))
     },
 
     getLabel: function(config){
@@ -23,12 +23,13 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        var depth = this.props.parents.length
-        var prop  = this.props.config
-        var name  = prop.name
+        var depth    = this.props.parents.length
+        var property = this.props.config
+
+        var name  = property.name
         var label = this.props.label = this.getLabel()
 
-        var nameStyle = {}
+        var nameStyle  = {}
         var valueStyle = {}
 
         if (this.props.labelWidth){
@@ -40,10 +41,10 @@ module.exports = React.createClass({
         }
 
         return (
-            <div className={"property depth-"+depth}>
-                <div className="name" style={nameStyle}>{label}</div>
+            <div className={"property depth-" + depth}>
+                <div className="name"  style={nameStyle}>{label}</div>
                 <div className="value" style={valueStyle}>
-                    {this.renderEditor(prop)}
+                    {this.renderEditor(property)}
                 </div>
             </div>
         )
@@ -54,20 +55,16 @@ module.exports = React.createClass({
             onFocus  : this.handleFocus,
             onBlur   : this.handleBlur,
             value    : this.props.value,
-            key: 'editor',
             className: 'editor',
-            onChange : this.props.onChange
+            onChange : this.handleChange
         }
 
-        var Editor = prop.editor
+        return (prop.editor || React.DOM.input)(props)
+    },
 
-        if (typeof Editor == 'function'){
-            Editor = Editor(props)
-        } else {
-            Editor = (Editor || React.DOM.input)(props)
-        }
-
-        return Editor //= <input />
+    handleChange: function(event){
+        event.stopPropagation()
+        this.props.onChange(event, this.props.config, event.target.value, this.props.parents)
     },
 
     handleFocus: function(event){

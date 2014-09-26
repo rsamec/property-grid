@@ -2,10 +2,12 @@
 
 'use strict'
 
-var React    = require('react')
+require('./index.styl')
+
+var React = require('react')
 // window.React = React
 
-var PropertyGrid = require('./index.js')
+var PropertyGrid = require('./src/index')
 var properties   = require('./test.props')
 
 var value = {
@@ -21,8 +23,8 @@ var value = {
     }
 }
 
-function onChange(v, prop, event){
-    // console.log(value)
+function onChange(event, prop, value, path, parents){
+    console.log(prop.name + ' has a new value: "' + value + '". Full path is ' + path.join('/'))
 }
 
 var i = 0
