@@ -105,7 +105,8 @@ React.renderComponent(
 
 ## CSS Styles
 
-Please either manually include ```index.css``` in your page or require it in your webpack module.
+
+Please either manually include ```index.css``` in your page or require it in your webpack module. It includes ```normalize.css```
 
 Example with webpack
 
@@ -119,5 +120,13 @@ var PropertyGrid = require('property-grid')
 
 ...
 ```
+Or you can import the stylesheet directly in your css with webpack css loader
 
-If you use ```webpack``` with ```stylus``` and also include ```normalize.css``` please use ```require('~property-grid/index.styl')``` since webpack will be smart enough to only include ```normalize.css``` only once in your project
+```css
+@import '~property-grid/index.css'
+
+.your-app .property-grid {
+    margin-top: 5px
+}
+
+```
