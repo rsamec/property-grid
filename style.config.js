@@ -1,10 +1,12 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-var file = 'index.css'
 module.exports = {
-    entry: './index.styl',
+    entry: {
+        'index'             : './index.styl',
+        'index-no-normalize': './index-no-normalize.styl'
+    },
     output: {
-        filename: file
+        filename: 'index.css'
     },
     module: {
         loaders: [
@@ -15,6 +17,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin(file)
+        new ExtractTextPlugin('[name].css')
     ]
 }

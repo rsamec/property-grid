@@ -130,3 +130,5 @@ Or you can import the stylesheet directly in your css with webpack css loader
 }
 
 ```
+
+If you already include ```normalize.css``` in your project, and don't want to have it included again, just use ```~property-grid/index-no-normalize.css``` or ```~property-grid/index-no-normalize.styl```.
