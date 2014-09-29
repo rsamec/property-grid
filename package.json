@@ -45,12 +45,12 @@
     "url": "https://github.com/radubrehar/property-grid/issues"
   },
   "dependencies": {
-    "functionally": "~0.5.1",
-    "set-deep": "~0.1.0",
-    "ustring": "~1.4.0",
+    "functionally": "~0.x.x",
+    "set-deep": "~0.x.x",
+    "ustring": "~1.x.x",
     "react": "~0.11.2",
-    "copy-utils": "~1.0.0",
+    "copy-utils": "~1.x.x",
     "normalize.css": "~3.0.1",
-    "css-utils": "~0.3.0"
+    "css-utils": "~0.x.x"
   }
 }
