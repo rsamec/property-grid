@@ -144,3 +144,23 @@ Or you can import the stylesheet directly in your css with webpack css loader
 ```
 
 If you already include ```normalize.css``` in your project, and don't want to have it included again, just use ```~property-grid/index-no-normalize.css``` or ```~property-grid/index-no-normalize.styl```.
+
+### Changelog
+
+#### 2.0.0
+
+ * update params sent to the onChange listener. The params sent now are:
+    * event
+    * prop (Object)
+    * value (String)
+    * path (Object[])
+
+    In order to obtain the full string path from an onChange call, just map path to prop.name:
+
+    ```js
+    function onChange(event, prop, value, path){
+        path = path.map(function(prop){ return prop.name })
+    }
+    ```
+
+#### 1.2.1
