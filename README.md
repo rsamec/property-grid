@@ -15,7 +15,17 @@ Please make sure you have a global ```React``` variable pointing to the ReactJS 
 Basic usage:
 ```jsx
 
-function onChange(event, prop, value, path, parents){
+/**
+ * The onChange function can expect the following params:
+ * @param  {Event} event The React event that triggered the change
+ * @param  {Object} prop  The property on which the change was triggered (This is the corresponding object)
+ * @param  {String} value The new value
+ * @param  {Object[]} path Array with all the parents of the property, including the property itself
+ */
+function onChange(event, prop, value, path){
+    path = path.map(function(prop){
+        return prop.name
+    })
     console.log(prop.name + ' has a new value: "' + value + '". Full path is ' + path.join('/'))
 }
 

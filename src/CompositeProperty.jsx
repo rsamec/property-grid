@@ -2,9 +2,9 @@
 
 'use strict'
 
-var React   = require('react')
-var F       = require('functionally')
-var getDeep = require('set-deep').get
+var React    = require('react')
+var F        = require('functionally')
+var getDeep  = require('set-deep').get
 var Property = require('./Property')
 var getLabel = require('./getLabel')
 
@@ -92,6 +92,7 @@ var CompositeProperty = React.createClass({
         }
 
         var value = this.getPropertyValue(parents, prop)
+        var path  = parents.concat(prop)
 
         return Property({
             key       : prop.name,
@@ -99,19 +100,16 @@ var CompositeProperty = React.createClass({
             value     : value,
             labelWidth: this.props.labelWidth,
             rowHeight : this.props.rowHeight,
-            parents   : parents,
+            path      : path,
             onChange  : this.handleChange
         })
     },
 
-    handleChange: function(event, prop, value, parents){
+    handleChange: function(event, prop, value, path){
 
-        var fn   = this.props.onChange || emptyFn
-        var path = parents.map(dotName)
+        var fn = this.props.onChange || emptyFn
 
-        path.push(prop.name)
-
-        fn(event, prop, value, path, parents)
+        fn(event, prop, value, path)
     },
 
     getPropertyValue: function(parents, prop){

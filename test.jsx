@@ -23,7 +23,10 @@ var value = {
     }
 }
 
-function onChange(event, prop, value, path, parents){
+function onChange(event, prop, value, path){
+    path = path.map(function(prop){
+        return prop.name
+    })
     console.log(prop.name + ' has a new value: "' + value + '". Full path is ' + path.join('/'))
 }
 

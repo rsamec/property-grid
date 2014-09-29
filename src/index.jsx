@@ -4,7 +4,9 @@
 
 var React    = require('react')
 var copyKeys = require('copy-utils').copyKeys
+var F        = require('functionally')
 
+var dotName = F.dot('name')
 var Property = require('./Property')
 var CompositeProperty = require('./CompositeProperty')
 var setDeep = require('set-deep')
@@ -69,15 +71,15 @@ module.exports = React.createClass({
         )
     },
 
-    handleChange: function(event, prop, value, path, parents){
+    handleChange: function(event, prop, value, path){
         var fn = this.props.onChange || emptyFn
 
         if (this.props.autoUpdate){
-            this.setPropertyValue(path, value)
+            this.setPropertyValue(path.map(dotName), value)
             this.setState({})
         }
 
-        fn(event, prop, value, path, parents)
+        fn(event, prop, value, path)
     },
 
     setPropertyValue: function(path, value){

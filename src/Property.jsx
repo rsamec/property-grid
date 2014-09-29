@@ -23,7 +23,7 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        var depth    = this.props.parents.length
+        var depth    = this.props.path.length - 1
         var property = this.props.config
 
         var name  = property.name
@@ -64,7 +64,7 @@ module.exports = React.createClass({
 
     handleChange: function(event){
         event.stopPropagation()
-        this.props.onChange(event, this.props.config, event.target.value, this.props.parents)
+        this.props.onChange(event, this.props.config, event.target.value, this.props.path)
     },
 
     handleFocus: function(event){
