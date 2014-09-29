@@ -8,6 +8,8 @@ var getDeep  = require('set-deep').get
 var Property = require('./Property')
 var getLabel = require('./getLabel')
 
+var valueBuilder = require('./utils/valueBuilder')
+
 var dotName = F.dot('name')
 
 function preventDefault(e){
@@ -29,6 +31,8 @@ var CompositeProperty = React.createClass({
     },
 
     render: function() {
+        this.props._value = valueBuilder(this.props.config.items, this.props.value || this.props.valueProvider)
+
         return this.renderProperty([], this.props.config)
     },
 
@@ -83,7 +87,7 @@ var CompositeProperty = React.createClass({
         return <span onMouseDown={preventDefault} onClick={this.onExpanderClick.bind(this, parents, prop)} className={expanderClasses.join(' ')} />
     },
 
-    renderProperty: function(parents, prop){
+    renderProperty: function(parents, prop, valueObject){
 
         if (prop.items){
             return prop.root?
@@ -91,8 +95,8 @@ var CompositeProperty = React.createClass({
                     this.renderComposite(parents, prop)
         }
 
-        var value = this.getPropertyValue(parents, prop)
         var path  = parents.concat(prop)
+        var value = this.getPropertyValue(prop, path)
 
         return Property({
             key       : prop.name,
@@ -112,17 +116,10 @@ var CompositeProperty = React.createClass({
         fn(event, prop, value, path)
     },
 
-    getPropertyValue: function(parents, prop){
-        var provider = this.props.valueProvider
-        var path     = parents.map(dotName)
+    getPropertyValue: function(prop, path){
+        path = path.map(dotName)
 
-        path.push(prop.name)
-
-        if (typeof provider == 'function'){
-            return provider(prop, path, parents)
-        }
-
-        return getDeep(path, this.props.value) || ''
+        return this.props._value[path] || ''
     },
 
     getCompositePropertyValue: function(parents, prop){
@@ -132,14 +129,11 @@ var CompositeProperty = React.createClass({
             return ''
         }
 
-        var value = this.getPropertyValue(parents, prop)
-        var path
+        var path  = parents.concat(prop)
+        var value = this.getPropertyValue(prop, path)
 
         if (typeof render == 'function'){
-            path = parents.map(dotName)
-            path.push(prop.name)
-
-            value = render(value, prop, path, parents)
+            value = render(value, prop, path)
         }
 
         return typeof value == 'object'?

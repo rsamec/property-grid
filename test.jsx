@@ -35,12 +35,18 @@ function provide(){
     return i++ + ' value'
 }
 
+function valueProvider(){
+    console.log(arguments)
+    return {}
+}
+
 var cmp = React.renderComponent(
     <PropertyGrid
         properties={properties}
         onChange={onChange}
         rowHeight={30}
         autoUpdate={true}
-        value={value} />
+        valueProvider={valueProvider}
+        />
     , document.body
 )
