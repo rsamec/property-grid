@@ -10,6 +10,8 @@ $ npm install --save property-grid
 
 ## Usage
 
+Please make sure you have a global ```React``` variable pointing to the ReactJS library!
+
 Basic usage:
 ```jsx
 
