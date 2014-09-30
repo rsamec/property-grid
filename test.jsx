@@ -36,8 +36,8 @@ function provide(){
 }
 
 function valueProvider(){
-    console.log(arguments)
-    return {}
+    // console.log(arguments)
+    return provide()
 }
 
 var cmp = React.renderComponent(
@@ -46,6 +46,7 @@ var cmp = React.renderComponent(
         onChange={onChange}
         rowHeight={30}
         autoUpdate={true}
+
         valueProvider={valueProvider}
         />
     , document.body

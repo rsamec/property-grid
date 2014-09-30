@@ -27,13 +27,19 @@ var CompositeProperty = React.createClass({
     },
 
     getLabel: function(config){
-        return getLabel(config || this.props.config)
+        return getLabel(config)
     },
 
-    render: function() {
-        this.props._value = valueBuilder(this.props.config.items, this.props.value || this.props.valueProvider)
+    render: function(){
+        var properties = this.props.properties || []
 
-        return this.renderProperty([], this.props.config)
+        this.props._value = valueBuilder(properties, this.props.value || this.props.valueProvider)
+
+        return (
+            <div className="property-composite root">
+                {properties.map(this.renderProperty.bind(this, []), this)}
+            </div>
+        )
     },
 
     renderRoot: function(prop){
@@ -46,8 +52,8 @@ var CompositeProperty = React.createClass({
 
     renderComposite: function(parents, prop){
 
-        var label     = this.getLabel(prop)
-        var nameStyle = {}
+        var label      = this.getLabel(prop)
+        var nameStyle  = {}
         var valueStyle = {}
 
         if (this.props.labelWidth){
@@ -87,12 +93,10 @@ var CompositeProperty = React.createClass({
         return <span onMouseDown={preventDefault} onClick={this.onExpanderClick.bind(this, parents, prop)} className={expanderClasses.join(' ')} />
     },
 
-    renderProperty: function(parents, prop, valueObject){
+    renderProperty: function(parents, prop){
 
         if (prop.items){
-            return prop.root?
-                    this.renderRoot(prop):
-                    this.renderComposite(parents, prop)
+            return this.renderComposite(parents, prop)
         }
 
         var path  = parents.concat(prop)
@@ -117,7 +121,7 @@ var CompositeProperty = React.createClass({
     },
 
     getPropertyValue: function(prop, path){
-        path = path.map(dotName)
+        path = path.map(dotName).join('.')
 
         return this.props._value[path] || ''
     },

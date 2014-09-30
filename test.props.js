@@ -61,7 +61,7 @@ module.exports = [
                 name: 'size',
                 readOnly: true,
                 render: function(value){
-                    var width = value.width
+                    var width  = value.width
                     var height = value.height
 
                     width = width == null?

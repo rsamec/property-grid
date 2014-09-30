@@ -8,7 +8,7 @@
     "build": "npm run lib && npm run compile-style",
     "lib": "./node_modules/.bin/gulp",
     "compile-style": "./node_modules/.bin/webpack --config style.config.js",
-    "serve": "./node_modules/.bin/http-server",
+    "serve": "http-server",
     "start": "npm run serve | npm run dev",
     "dev": "./node_modules/.bin/webpack-dev-server --progress --colors --port 8181"
   },

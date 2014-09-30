@@ -35,7 +35,7 @@ module.exports = function builder(props, value){
             })
         }
 
-        var value = valueProvider(prop, path, childValue)
+        var value = valueProvider(prop, path, childValue) || childValue
 
         path = arrayPath
 

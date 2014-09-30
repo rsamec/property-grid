@@ -59,7 +59,7 @@ module.exports = React.createClass({
         return (
             <div className="body">
                 <CompositeProperty
-                    config={root}
+                    properties={this.props.properties}
                     labelWidth={this.props.labelWidth}
                     rowHeight={this.props.rowHeight}
                     onChange={this.handleChange}
