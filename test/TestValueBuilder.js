@@ -31,10 +31,10 @@ describe('ValueBuilder', function(){
 
         result.should
             .eql({
-                name: '',
+                name: undefined,
                 'style.top': 10,
                 'style.bottom': 'b',
-                    style: {
+                style: {
                     top: 10,
                     bottom: 'b'
                 }
@@ -49,14 +49,13 @@ describe('ValueBuilder', function(){
             {
                 name: 'style',
                 items: [
-
-                            {
-                                name: 'top'
-                            },
-                            {
-                                name: 'bottom'
-                            }
-                        ]
+                    {
+                        name: 'top'
+                    },
+                    {
+                        name: 'bottom'
+                    }
+                ]
             }
         ]
 
@@ -82,7 +81,10 @@ describe('ValueBuilder', function(){
                 name: undefined,
                 'style.top': 'top',
                 'style.bottom': 'bot',
-                style: undefined
+                style: {
+                    top: 'top',
+                    bottom: 'bot'
+                }
             })
 
         styleChildValue.should
