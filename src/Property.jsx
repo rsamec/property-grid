@@ -56,10 +56,11 @@ module.exports = React.createClass({
             onBlur   : this.handleBlur,
             value    : this.props.value,
             className: 'editor',
-            onChange : this.handleChange
+            onChange : this.handleChange,
+            args:this.props.args
         }
 
-        return (prop.editor || React.DOM.input)(props)
+        return React.createElement(prop.editor || 'input',props);
     },
 
     handleChange: function(event){

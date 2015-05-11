@@ -102,7 +102,7 @@ var CompositeProperty = React.createClass({
         var path  = parents.concat(prop)
         var value = this.getPropertyValue(prop, path)
 
-        return Property({
+        return React.createElement(Property,{
             key       : prop.name,
             config    : prop,
             value     : value,
@@ -110,7 +110,7 @@ var CompositeProperty = React.createClass({
             rowHeight : this.props.rowHeight,
             path      : path,
             onChange  : this.handleChange
-        })
+        });
     },
 
     handleChange: function(event, prop, value, path){

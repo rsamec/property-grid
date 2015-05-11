@@ -37,7 +37,7 @@ module.exports = React.createClass({
 
         this.prepareClassName(props)
 
-        return React.DOM.div(props, this.renderBody())
+        return React.createElement('div',props, this.renderBody());
     },
 
     prepareClassName: function(props) {
